@@ -15,8 +15,8 @@ figsize=(14,6)
 sim = rebound.Simulation("DATA.bin")
 
 # We can add Saturn and its moons by name, since REBOUND is linked to the HORIZONS database.
-# labels = ["699","Mimas","Tethys","Titan", "Enceladus", "Dione", "Rhea"]
-labels = ["699","Mimas","Tethys","Titan"]
+labels = ["699","Mimas","Tethys","Titan", "Enceladus", "Dione", "Rhea"]
+# labels = ["699","Mimas","Tethys","Titan"]
 
 os = sim.orbits()
 print("Planet: Saturn and moons:",", ".join(f"{labels[i]}" for i in range(1,len(labels))))
@@ -84,7 +84,7 @@ def ForceJ2(reb_sim):
         ps[0].az -= mfac*paz
 
 ### UNCOMMENT TO ADD J2 EFFECTS TO THE SIMULATION
-# sim.additional_forces = ForceJ2
+sim.additional_forces = ForceJ2
 
 for i,time in enumerate(times):
     sim.integrate(time)
@@ -265,9 +265,10 @@ phi_dot_bienmieuxbetter = 2*n[0]-4*n[1]+Omega0_dot+Omega1_dot
 def plot_dres_dt(flag):
     if flag:
         plt.figure(figsize=figsize)
-        plt.plot(times,phi_dot_bienmieuxbetter)
+        plt.plot(times,phi_dot_bienmieuxbetter, color="darkorange")
         # plt.plot(times,n[1])
-        plt.show()
+        # plt.show()
+        plt.savefig("phidot/6moons_phidot_J2.png", format="png")
 
 print(f"\nMean resonant angle rate: <dphi/dt> = {np.mean(phi_dot_bienmieuxbetter):.5f}")
 
@@ -333,7 +334,7 @@ plot_ecc(False)
 plot_xt(False)
 
 plot_resonant(False)
-plot_dres_dt(False)
+plot_dres_dt(True)
 # plot_gradresangle(False)
 
 plot_Energ(False)
