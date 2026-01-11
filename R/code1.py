@@ -188,3 +188,8 @@ print(f"\n(ii). Flux received on Earth is (rounded to 4 decimal places): {Flux(g
 # ALSO, IN DATA/ FOLDER YOU WILL FIND THE ASCII FILES REQUIRED."
 #
 ################################################################
+
+#In case something went wrong here is what I found when launching the program:
+# (i). Total number of CN radicals in the spectrometer aperture (rounded to 4 decimal places): 2.2018e+28 radicals.
+
+# (ii). Flux received on Earth is (rounded to 4 decimal places): 1.8033e-12 erg/s/cm^2.
